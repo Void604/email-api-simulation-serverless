@@ -200,12 +200,6 @@ Replace the simulation in `handler.js` with actual calls to AWS SES, SendGrid, M
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ### GitHub Topics / Tags
 
 ```
