@@ -1,0 +1,36 @@
+# serverless.yml
+# This file configures your serverless service, including functions, events, and plugins.
+
+service: email-sender-api # The name of your serverless service. This will be the name of your CloudFormation stack.
+
+frameworkVersion: '4' # Keep this as '4' to match your installed Serverless Framework version.
+
+provider:
+  name: aws # Specifies the cloud provider (AWS in this case).
+  runtime: nodejs18.x # The Node.js runtime version for your Lambda functions. Choose an LTS version.
+  region: us-east-1 # The AWS region where your service will be deployed.
+  stage: dev # The deployment stage (e.g., dev, staging, prod). Default is 'dev'.
+
+  # IAM Role Statements (Permissions):
+  # This section is REMOVED as we are no longer doing real SES sending for now.
+  # If you decide to integrate a real email service later, you would add permissions here.
+
+  # Environment Variables:
+  # You can define environment variables here that your Lambda function can access.
+  environment:
+    # Example:
+    # MY_VARIABLE: 'someValue'
+
+plugins:
+  - serverless-offline # This plugin allows you to run and test your Serverless functions locally without deploying to AWS.
+
+functions:
+  sendEmail: # This is the unique name of your Lambda function within this service.
+    handler: handler.sendEmail # Specifies the entry point for your Lambda function.
+                              # It means: look for the 'sendEmail' function in the 'handler.js' file.
+    events: # Defines the events that will trigger this Lambda function.
+      - http: # This defines an HTTP endpoint using AWS API Gateway.
+          path: send-email # The URL path for this endpoint (e.g., [your-api-gateway-url.com/dev/send-email](https://your-api-gateway-url.com/dev/send-email)).
+          method: post # The HTTP method this endpoint responds to (e.g., GET, POST, PUT, DELETE).
+          cors: true # Enables Cross-Origin Resource Sharing (CORS) for this endpoint.
+                     # Essential if your web frontend will be making requests from a different domain.

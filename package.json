@@ -1,0 +1,19 @@
+{
+  "name": "email-sender-api",
+  "version": "1.0.0",
+  "description": "Serverless REST API to send emails",
+  "main": "handler.js",
+  "scripts": {
+    "start": "sls offline start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-offline": "^13.3.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1692.0"
+  }
+}
