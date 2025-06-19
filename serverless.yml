@@ -13,7 +13,6 @@ provider:
 
   # IAM Role Statements (Permissions):
   # This section is REMOVED as we are no longer doing real SES sending for now.
-  # If you decide to integrate a real email service later, you would add permissions here.
 
   # Environment Variables:
   # You can define environment variables here that your Lambda function can access.
